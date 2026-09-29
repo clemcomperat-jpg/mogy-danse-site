@@ -1,0 +1,10 @@
+# Accès FTP (contient des mots de passe)
+deploiement.env
+
+# Fichiers système / éditeurs
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/

@@ -1,0 +1,52 @@
+# MOGY DANS' CLUB — configuration Apache (Hostinger et OVH utilisent Apache)
+
+# Page d'erreur personnalisée
+ErrorDocument 404 /404.html
+
+# Encodage
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Forcer le HTTPS (activez d'abord le certificat SSL gratuit dans le panneau de l'hébergeur)
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Rediriger www vers le domaine sans www (décommentez si vous le souhaitez)
+  # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  # RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+  # Anciennes adresses du site IONOS → nouvelles pages (conserve le référencement)
+  RewriteRule ^danses-enseignees/?$ /danses.html [L,R=301]
+  RewriteRule ^les-professeurs/?$ /professeurs.html [L,R=301]
+  RewriteRule ^photos/?$ /photos.html [L,R=301]
+  RewriteRule ^videos/?$ /videos.html [L,R=301]
+  RewriteRule ^horaires-et-calendrier/?$ /horaires.html [L,R=301]
+  RewriteRule ^contacts/?$ /contact.html [L,R=301]
+  RewriteRule ^sitemap/?$ /sitemap.xml [L,R=301]
+</IfModule>
+
+# Sécurité
+Options -Indexes
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Cache navigateur pour les fichiers statiques
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml
+</IfModule>
