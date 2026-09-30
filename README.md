@@ -1,6 +1,6 @@
 # MOGY DANS' CLUB — Site web
 
-Nouveau site du club de danse **Mogy Dans' Club** (Fouchères & Sens, Yonne), recréé de A à Z à partir du contenu de l'ancien site IONOS [cours-danse89.fr](https://www.cours-danse89.fr/).
+Nouveau site du club de danse **Mogy Dans' Club** (Sens & Fouchères, Yonne), recréé de A à Z à partir du contenu de l'ancien site IONOS [cours-danse89.fr](https://www.cours-danse89.fr/).
 
 - Site **statique** (HTML + CSS + un peu de JavaScript), sans base de données ni CMS : rapide, sûr, gratuit à maintenir.
 - Un seul petit fichier **PHP** pour le formulaire de contact.
